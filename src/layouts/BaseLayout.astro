@@ -1,0 +1,86 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { withBase } from '../lib/base';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** The route's own path, e.g. "/privacy" — used to build a correct,
+   * base-prefixed canonical/OG URL. Deliberately explicit rather than
+   * derived from Astro.url.pathname, whose exact base-inclusion behavior
+   * has changed across Astro versions/config combinations — an explicit
+   * path is unambiguous and easy to verify against the built output. */
+  path: string;
+  /** Omit noindex for normal public pages; set true only if a page should
+   * exist but not be indexed (currently only the 404 page). */
+  noindex?: boolean;
+}
+
+const { title, description, path, noindex = false } = Astro.props;
+const canonicalURL = new URL(withBase(path), Astro.site);
+const ogImageURL = new URL(withBase('/og-image.png'), Astro.site);
+const pageTitle = title === 'PS LASER' ? title : `${title} · PS LASER`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href={withBase('/favicon-32.png')} type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="PS LASER" />
+    <meta property="og:image" content={ogImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <meta name="theme-color" content="#0a0a0a" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Progressive-enhancement scroll reveal — every .reveal element is
+      // fully visible by default (see global.css); this only adds the
+      // fade/slide-in transition where JS + IntersectionObserver are
+      // available, and never runs at all under prefers-reduced-motion.
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReduced && 'IntersectionObserver' in window) {
+        const els = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+        );
+        els.forEach((el) => observer.observe(el));
+      } else {
+        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>

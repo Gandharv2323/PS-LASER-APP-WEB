@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gandharv2323.github.io/PS-LASER-APP-WEB/sitemap-index.xml

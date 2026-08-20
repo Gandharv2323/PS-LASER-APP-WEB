@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ShowcasePlaceholder from '../components/ShowcasePlaceholder.astro';
+import { withBase } from '../lib/base';
+
+const screens = [
+  {
+    label: 'Orders',
+    title: 'Multi-part orders, priced and tracked from intake.',
+    copy: 'Create an order with multiple parts, each with its own material, quantity, pricing, and due date. Every order carries an independent production status and payment status, so one is never blocked by the other.',
+  },
+  {
+    label: 'Calendar',
+    title: 'Two views of the same schedule.',
+    copy: 'See orders by the date they were taken, or by the date they’re due — as separate, clearly marked views on the same calendar, filterable by who took the order.',
+  },
+  {
+    label: 'Production',
+    title: 'A part’s stage, always current.',
+    copy: 'Laser Cutting, Punching, Powder Coating — each stage’s progress is logged against the order directly, with a manual override available for a Supervisor, Manager, or Owner to correct a stage if needed.',
+  },
+  {
+    label: 'Worker Allocation',
+    title: 'Split a job across the right people.',
+    copy: 'Assign a quantity of a job to specific eligible workers on a specific machine. A built-in split proposal weighs current workload, then a Supervisor can adjust it before accepting.',
+  },
+  {
+    label: 'My Jobs',
+    title: 'What a worker sees, and only that.',
+    copy: 'A Worker’s own view: their assigned machine’s queue, any jobs directly allocated to them, and a simple way to log progress against a part’s remaining quantity.',
+  },
+  {
+    label: 'Delivery Hub',
+    title: 'Today, Upcoming, Overdue, Delivered.',
+    copy: 'Every dispatch-stage order sorted into the view that matters right now, with live counts, a one-tap map lookup for the delivery address, and an on-time/late record kept automatically.',
+  },
+  {
+    label: 'Reports',
+    title: 'Sales, orders, and production — exportable.',
+    copy: 'Sales performance by staff member, a full order-level report, and production analytics, each exportable as a PDF for sharing outside the app.',
+  },
+  {
+    label: 'AI Chat',
+    title: 'Ask the floor a question, get a real answer.',
+    copy: 'An in-app assistant that answers using your own live operational data — deliveries due today, overdue orders, floor status — not a generic chatbot bolted on top.',
+  },
+  {
+    label: 'Attachments',
+    title: 'A reference photo, linked to the order.',
+    copy: 'Attach a reference photo at order creation or later from the order’s detail screen — it stays linked to that order for as long as it’s needed on the floor.',
+  },
+  {
+    label: 'History',
+    title: 'Every order, ever — not just what’s active.',
+    copy: 'The one screen with no status filter at all: every order the company has ever taken, searchable, and filterable by who took it.',
+  },
+];
+---
+
+<BaseLayout
+  title="The App"
+  description="A tour of the PS Laser app: Orders, Calendar, Production, Worker Allocation, Delivery Hub, Reports, AI Chat, Attachments, and History."
+  path="/app"
+>
+  <PageHero
+    eyebrow="The App"
+    title="Every part of the job, in one app."
+    intro="From taking an order to confirming it's delivered — built as one connected system, not separate tools stitched together."
+  />
+
+  <div class="callout container reveal" style="margin-bottom: 24px;">
+    Screens below are shown as placeholder frames — real screenshots from the current build
+    will replace them here.
+  </div>
+
+  {screens.map((s, i) => (
+    <section class="section screen-row" data-reverse={i % 2 === 1 ? 'true' : undefined}>
+      <div class="container screen-grid">
+        <div class="screen-visual reveal">
+          <ShowcasePlaceholder label={s.label} />
+        </div>
+        <div class="screen-copy reveal">
+          <p class="eyebrow">{s.label}</p>
+          <h2>{s.title}</h2>
+          <p>{s.copy}</p>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <hr class="divider container" />
+
+  <section class="section cta">
+    <div class="container reveal">
+      <h2>Ready to see it running?</h2>
+      <p>Reach out for a walkthrough, or read more about how the platform is organized.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href={withBase('/contact')}>Contact Us</a>
+        <a class="btn btn-secondary" href={withBase('/')}>Back to Overview</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding-block: clamp(48px, 8vh, 96px);
+  }
+  .screen-row:nth-child(odd) {
+    background: var(--bg-1);
+  }
+  .screen-grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  .screen-row[data-reverse] .screen-visual {
+    order: 2;
+  }
+  .screen-visual {
+    display: flex;
+    justify-content: center;
+  }
+  .screen-copy h2 {
+    font-size: var(--size-h3);
+    margin-top: 10px;
+    margin-bottom: 14px;
+    max-width: 20ch;
+  }
+  .screen-copy p:not(.eyebrow) {
+    max-width: 52ch;
+    font-size: var(--size-body-lg);
+  }
+
+  .cta {
+    text-align: left;
+  }
+  .cta h2 {
+    font-family: var(--font-display);
+    font-size: var(--size-h2);
+    margin-bottom: 14px;
+  }
+  .cta p {
+    max-width: 50ch;
+    margin-bottom: 28px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 900px) {
+    .screen-grid {
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+  }
+</style>

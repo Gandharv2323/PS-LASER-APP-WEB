@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { withBase } from '../lib/base';
+
+const lastUpdated = '20 August 2026';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="How PS Laser collects, uses, stores, and protects data — grounded in the app's actual implementation, including authentication, Firestore, Cloudflare, Backblaze B2, Google Drive, OpenRouter, and FCM."
+  path="/privacy"
+>
+  <PageHero eyebrow="Legal" title="Privacy Policy" />
+
+  <section class="section">
+    <div class="container">
+      <p class="last-updated reveal">Last updated: {lastUpdated}</p>
+
+      <div class="prose reveal">
+        <h2>Who operates this app</h2>
+        <p>
+          PS Laser<br />
+          Gat No. 753, Velu Bag, Tal-Bhor<br />
+          Pune – 412205, Maharashtra, India<br />
+          GST: 27ABHFP5667Q1Z8<br />
+          Phone: +91 77199 76990<br />
+          Support: <a href="mailto:pslaser24@gmail.com">pslaser24@gmail.com</a>
+        </p>
+        <p>
+          PS Laser is an internal manufacturing operations application used by PS Laser's own
+          staff (Owners, Managers, Supervisors, and Workers) to manage orders, production, and
+          delivery. It is not a consumer-facing app, and customers do not create accounts or
+          log in themselves.
+        </p>
+
+        <h2>Data we collect</h2>
+        <h3>Employee (staff user) data</h3>
+        <ul>
+          <li>Name, role, department, shift</li>
+          <li>
+            A login PIN — never stored in plain text. It is converted to a one-way cryptographic
+            hash (scrypt) before being written to a storage location that no user, including an
+            Owner, can read directly through the app.
+          </li>
+          <li>
+            A security question and answer, used only to recover access if a PIN is forgotten.
+            The answer is hashed the same way the PIN is.
+          </li>
+          <li>A device push-notification token, tied to your account and device, used to deliver notifications.</li>
+        </ul>
+
+        <h3>Customer / client data (entered by staff, about your customers)</h3>
+        <ul>
+          <li>Client name, phone number, email address, billing/delivery address, and GST number, where provided</li>
+          <li>Order details: items, quantities, pricing, due dates, and an optional reference photo</li>
+        </ul>
+
+        <div class="callout">
+          Order and client records are retained as financial and business records and are not
+          deleted on request — cancelling an order is used instead of deleting it. This mirrors
+          standard bookkeeping practice for a manufacturing business and is explained further
+          under "Data retention" below.
+        </div>
+
+        <h2>How we use data</h2>
+        <ul>
+          <li>To operate the core functions of the app — orders, production tracking, delivery, and reporting.</li>
+          <li>To send push notifications about order events, delivery reminders, and job assignments.</li>
+          <li>
+            To power the in-app AI assistant: when you ask it a question, a summary of relevant
+            operational data (such as order status, due dates, and — where relevant to your
+            question — client name and delivery address) is sent to our AI provider,
+            OpenRouter, to generate a response. Phone numbers, email addresses, GST numbers, and
+            other long numeric identifiers are automatically stripped before this data is sent.
+            Client names and delivery addresses are <strong>not</strong> currently stripped when
+            they're relevant to answering your question — we're disclosing this plainly rather
+            than describing the process as fully anonymized.
+          </li>
+        </ul>
+
+        <h2>Third-party services we use</h2>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th>Service</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Firebase Authentication</td><td>Signs you into the app after your PIN is verified</td></tr>
+              <tr><td>Cloud Firestore</td><td>Primary application database</td></tr>
+              <tr><td>Firebase Cloud Messaging</td><td>Delivers push notifications to your device</td></tr>
+              <tr><td>Firebase Crashlytics</td><td>Crash reporting in release builds only, to help us fix bugs. No advertising or usage-analytics SDK is used anywhere in the app.</td></tr>
+              <tr><td>Cloudflare Workers</td><td>Our application backend — handles login, notifications, and the AI assistant proxy</td></tr>
+              <tr><td>Backblaze B2</td><td>Stores order reference images while an order is active</td></tr>
+              <tr><td>Google Drive</td><td>A dedicated business Google account (not any user's personal account) archives older order reference images after a retention period</td></tr>
+              <tr><td>OpenRouter</td><td>Processes AI assistant chat requests (see "How we use data" above)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Data retention</h2>
+        <p>
+          Order, client, and financial records are retained indefinitely as business and
+          legal/financial records — this matches standard accounting-record practice, and
+          orders are cancelled rather than deleted. Order reference images move from active
+          storage to long-term archive storage after 90 days once an order is complete or
+          cancelled, and remain in archive storage after that (no further automatic deletion
+          currently occurs). Login-attempt and rate-limiting records are used only for security
+          purposes and are not accessible to any user through the app.
+        </p>
+
+        <h2>Your choices &amp; account deletion</h2>
+        <p>
+          See our dedicated <a href={withBase('/delete-account')}>Delete Account</a> page for exactly what
+          deleting your account covers today, what business records are retained regardless,
+          and how to request it.
+        </p>
+
+        <h2>Camera &amp; photo library access</h2>
+        <p>
+          The app requests camera access to scan QR codes and to take reference photos for
+          orders, and photo-library access to attach an existing photo to an order. Neither
+          permission is used for anything beyond these two purposes.
+        </p>
+
+        <h2>Children's privacy</h2>
+        <p>
+          PS Laser is an internal business tool for our own staff and is not directed at, or
+          knowingly used by, children.
+        </p>
+
+        <h2>Security</h2>
+        <p>
+          PINs and security-question answers are never stored in plain text. Application
+          secrets (API keys, service credentials) are held only on our backend and are never
+          shipped inside the app. Repeated failed login attempts are automatically rate-limited.
+        </p>
+
+        <h2>Changes to this policy</h2>
+        <p>
+          If this policy changes in a way that materially affects how your data is handled,
+          we'll update the "last updated" date above.
+        </p>
+
+        <h2>Contact us</h2>
+        <p>
+          Questions about this policy or how your data is handled: <a href="mailto:pslaser24@gmail.com">pslaser24@gmail.com</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding-block: clamp(32px, 6vh, 64px) 0;
+  }
+</style>

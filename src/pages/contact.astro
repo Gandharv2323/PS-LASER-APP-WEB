@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact PS Laser — support email and business address."
+  path="/contact"
+>
+  <PageHero eyebrow="Contact" title="Reach us directly." />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="reveal">
+        <p class="col-heading">Support</p>
+        <a class="big-link" href="mailto:pslaser24@gmail.com">pslaser24@gmail.com</a>
+        <p class="note">For app support, account questions, or data requests.</p>
+      </div>
+
+      <div class="reveal">
+        <p class="col-heading">Phone</p>
+        <a class="big-link" href="tel:+917719976990">+91 77199 76990</a>
+      </div>
+
+      <div class="reveal">
+        <p class="col-heading">Business Address</p>
+        <p class="addr">
+          PS Laser<br />
+          Gat No. 753, Velu Bag, Tal-Bhor<br />
+          Pune – 412205, Maharashtra, India
+        </p>
+        <p class="gst">GSTIN: 27ABHFP5667Q1Z8</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding-block: clamp(32px, 6vh, 64px) var(--section-gap);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .col-heading {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 10px;
+  }
+  .big-link {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-1);
+    text-decoration: none;
+  }
+  .big-link:hover {
+    color: var(--gold-light);
+  }
+  .note {
+    margin-top: 10px;
+    font-size: 0.9375rem;
+  }
+  .addr {
+    font-size: 1.0625rem;
+    color: var(--text-1);
+  }
+  .gst {
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-3);
+  }
+
+  @media (min-width: 700px) {
+    .contact-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,43 @@
+name: Deploy website to GitHub Pages
+
+# This repo's default branch is `main` (confirmed via the GitHub API
+# before this workflow was added — this repo was empty with no commits
+# yet, so the branch couldn't be inferred from any existing history).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment at a time; a newer push cancels an in-flight one
+# rather than queuing behind it.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+      - name: Install, build, and upload the website
+        uses: withastro/action@v6
+        # No `path:` input — the Astro project lives at this repo's root
+        # (this repo is website-only, unlike the Flutter app's monorepo
+        # this site was originally developed inside).
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { withBase } from '../lib/base';
+
+const lastUpdated = '20 August 2026';
+---
+
+<BaseLayout
+  title="Terms of Use"
+  description="Terms of Use for the PS Laser production management application."
+  path="/terms"
+>
+  <PageHero eyebrow="Legal" title="Terms of Use" />
+
+  <section class="section">
+    <div class="container">
+      <p class="last-updated reveal">Last updated: {lastUpdated}</p>
+
+      <div class="prose reveal">
+        <h2>1. Who these terms apply to</h2>
+        <p>
+          PS Laser is an internal manufacturing operations application, made available to
+          employees and authorized staff of PS Laser and companies PS Laser is contracted to
+          serve. By signing in with a PIN and account issued to you, you agree to these terms.
+        </p>
+
+        <h2>2. What the app does</h2>
+        <p>
+          PS Laser provides order intake, production workflow tracking (Laser Cutting,
+          Punching, Powder Coating), machine and worker allocation, delivery supervision,
+          reporting, and an in-app AI assistant that answers operational questions using your
+          company's own live data. Functionality is described accurately at the time of
+          publishing and may change as the app is developed further.
+        </p>
+
+        <h2>3. Accounts and access</h2>
+        <p>
+          Accounts are created through in-app registration and require approval from an Owner
+          or Manager before use (the first account registered for a company becomes its Owner
+          account automatically). You are responsible for keeping your PIN confidential and for
+          activity that occurs under your account. A Worker account's access is intentionally
+          limited to their own assigned machine queue and jobs; other roles have broader access
+          appropriate to their responsibilities.
+        </p>
+
+        <h2>4. Acceptable use</h2>
+        <ul>
+          <li>Use the app only for legitimate business operations related to your role.</li>
+          <li>Do not attempt to access data or functionality outside what your role is granted.</li>
+          <li>Do not attempt to interfere with, disrupt, or reverse-engineer the app or its backend services.</li>
+        </ul>
+
+        <h2>5. Data handling</h2>
+        <p>
+          How we collect, use, and store data is described in full in our
+          <a href={withBase('/privacy')}>Privacy Policy</a>, which is incorporated into these terms by
+          reference.
+        </p>
+
+        <h2>6. No warranty</h2>
+        <p>
+          The app is provided on an "as is" basis. We do not guarantee uninterrupted
+          availability, and we make no claims about specific response times or uptime beyond
+          what is separately and explicitly agreed with your company.
+        </p>
+
+        <h2>7. Changes to these terms</h2>
+        <p>
+          We may update these terms as the app changes. Material changes will be reflected in
+          the "last updated" date above.
+        </p>
+
+        <h2>8. Contact</h2>
+        <p>
+          Questions about these terms: <a href="mailto:pslaser24@gmail.com">pslaser24@gmail.com</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding-block: clamp(32px, 6vh, 64px) 0;
+  }
+</style>

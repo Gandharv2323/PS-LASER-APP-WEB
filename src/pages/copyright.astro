@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const year = new Date().getFullYear();
+const lastUpdated = '20 August 2026';
+---
+
+<BaseLayout
+  title="Copyright"
+  description="Copyright and trademark information for the PS Laser software, website, and brand."
+  path="/copyright"
+>
+  <PageHero eyebrow="Legal" title="Copyright" />
+
+  <section class="section">
+    <div class="container">
+      <p class="last-updated reveal">Last updated: {lastUpdated}</p>
+
+      <div class="prose reveal">
+        <h2>Software ownership</h2>
+        <p>
+          The PS Laser application, its source code, and its backend services are the property
+          of PS Laser. All rights not expressly granted are reserved.
+        </p>
+
+        <h2>Website content</h2>
+        <p>
+          © {year} PS Laser. All text, layout, and design on this website are the property of
+          PS Laser unless otherwise noted, and may not be reproduced without permission.
+        </p>
+
+        <h2>Logo &amp; trademark usage</h2>
+        <p>
+          "PS LASER" and the PS Laser logo are used to identify our software and services. Do
+          not use our name or logo in a way that suggests endorsement or affiliation without
+          our prior written permission.
+        </p>
+
+        <h2>Reporting a concern</h2>
+        <p>
+          If you believe content on this site or in the app infringes your rights, contact us
+          at <a href="mailto:pslaser24@gmail.com">pslaser24@gmail.com</a> with enough detail for
+          us to locate and review the material in question.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding-block: clamp(32px, 6vh, 64px) var(--section-gap);
+  }
+</style>

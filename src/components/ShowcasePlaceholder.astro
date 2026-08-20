@@ -1,0 +1,58 @@
+---
+// Real app screenshots don't exist in the repo yet (confirmed during the
+// codebase audit — no screenshots directory anywhere). Rather than
+// fabricate imagery, this renders an honestly-labeled placeholder frame in
+// the app's own phone aspect ratio, so the layout is exactly what a real
+// screenshot will drop into later.
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+---
+
+<div class="placeholder-frame" role="img" aria-label={`Screenshot placeholder: ${label}`}>
+  <div class="frame-inner">
+    <span class="frame-label">{label}</span>
+    <span class="frame-note">Screenshot coming soon</span>
+  </div>
+</div>
+
+<style>
+  .placeholder-frame {
+    aspect-ratio: 9 / 17.5;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 28px;
+    border: 1px solid var(--border);
+    background:
+      radial-gradient(circle at 30% 15%, rgba(219, 174, 69, 0.08), transparent 55%),
+      linear-gradient(180deg, var(--bg-card), var(--bg-1));
+    padding: 10px;
+  }
+  .frame-inner {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    padding: 20px;
+  }
+  .frame-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text-1);
+  }
+  .frame-note {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+</style>

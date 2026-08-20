@@ -1,0 +1,136 @@
+---
+import { withBase } from '../lib/base';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <p class="wordmark">PS LASER</p>
+      <p class="statement">
+        Production management software for precision manufacturing — orders, machines,
+        delivery, and floor operations in one system.
+      </p>
+    </div>
+
+    <nav class="footer-col" aria-label="Navigation">
+      <p class="col-heading">Navigation</p>
+      <a href={withBase('/')}>Home</a>
+      <a href={withBase('/about')}>About</a>
+      <a href={withBase('/services')}>Services</a>
+      <a href={withBase('/app')}>The App</a>
+    </nav>
+
+    <nav class="footer-col" aria-label="Support">
+      <p class="col-heading">Support</p>
+      <a href={withBase('/support')}>Help Center</a>
+      <a href={withBase('/faq')}>FAQ</a>
+      <a href={withBase('/contact')}>Contact</a>
+    </nav>
+
+    <nav class="footer-col" aria-label="Legal">
+      <p class="col-heading">Legal</p>
+      <a href={withBase('/privacy')}>Privacy Policy</a>
+      <a href={withBase('/terms')}>Terms of Use</a>
+      <a href={withBase('/delete-account')}>Delete Account</a>
+      <a href={withBase('/copyright')}>Copyright</a>
+    </nav>
+
+    <div class="footer-col">
+      <p class="col-heading">Contact</p>
+      <a href="mailto:pslaser24@gmail.com">pslaser24@gmail.com</a>
+      <p class="addr">
+        Gat No. 753, Velu Bag, Tal-Bhor<br />
+        Pune – 412205, Maharashtra, India
+      </p>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <hr class="divider" />
+    <div class="footer-bottom-row">
+      <p class="fine-print">© {year} PS Laser. All rights reserved.</p>
+      <p class="fine-print">GSTIN 27ABHFP5667Q1Z8</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-1);
+    border-top: 1px solid var(--border-subtle);
+    padding-block: clamp(56px, 8vw, 96px) 32px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-brand .wordmark {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--text-1);
+    margin: 0 0 14px;
+  }
+  .footer-brand .statement {
+    max-width: 34ch;
+    font-size: 0.9375rem;
+    color: var(--text-3);
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .col-heading {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 6px;
+  }
+  .footer-col a {
+    color: var(--text-2);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    width: fit-content;
+    padding-block: 2px;
+  }
+  .footer-col a:hover {
+    color: var(--text-1);
+  }
+  .addr {
+    color: var(--text-3);
+    font-size: 0.875rem;
+    margin: 4px 0 0;
+  }
+
+  .footer-bottom {
+    margin-top: 56px;
+  }
+  .footer-bottom-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    padding-top: 20px;
+  }
+  .fine-print {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-3);
+    margin: 0;
+  }
+
+  @media (min-width: 700px) {
+    .footer-grid {
+      grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr;
+    }
+  }
+</style>

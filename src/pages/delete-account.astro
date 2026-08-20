@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { withBase } from '../lib/base';
+
+const lastUpdated = '20 August 2026';
+---
+
+<BaseLayout
+  title="Delete Account"
+  description="How to request deletion of your PS Laser account and data, and exactly what is and isn't covered today."
+  path="/delete-account"
+>
+  <PageHero eyebrow="Legal" title="Delete Account" />
+
+  <section class="section">
+    <div class="container">
+      <p class="last-updated reveal">Last updated: {lastUpdated}</p>
+
+      <div class="prose reveal">
+        <div class="callout warning">
+          <strong>Current status:</strong> the app has a "Delete My Account" control (Settings
+          → Danger Zone), but it is not completing correctly end-to-end today — a known issue
+          we're actively addressing. Until it's fixed, please use the request path below
+          instead.
+        </div>
+
+        <h2>How to request account deletion</h2>
+        <p>
+          Email <a href="mailto:pslaser24@gmail.com?subject=Account%20Deletion%20Request">pslaser24@gmail.com</a>
+          from the email address associated with your account (or include your registered name
+          and employer) with the subject "Account Deletion Request." We'll confirm your
+          identity with your company's Owner or Manager and process the request.
+        </p>
+
+        <h2>What deletion covers</h2>
+        <ul>
+          <li>Your employee profile (name, role, department, shift)</li>
+          <li>Your login credentials (PIN hash, security-question answer)</li>
+          <li>Device push-notification tokens registered to your account</li>
+          <li>Your AI assistant chat history</li>
+        </ul>
+
+        <h2>What is retained regardless of a deletion request</h2>
+        <p>
+          Orders, client records, and production/financial history you were involved in are
+          kept as business and legal/financial records, the same way they're retained for every
+          account — not specific to you. This is existing, standard practice for a
+          manufacturing business's bookkeeping and audit trail, described further in our
+          <a href={withBase('/privacy')}>Privacy Policy</a>. Your name may continue to appear on historical
+          records (for example, "order taken by") even after your account itself is deleted.
+        </p>
+
+        <h2>Timeline</h2>
+        <p>
+          We aim to process deletion requests within a reasonable time after confirming your
+          identity. Because this is currently a manual, request-based process rather than an
+          automated one, exact timing can vary — we'll confirm with you directly once your
+          request is received.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding-block: clamp(32px, 6vh, 64px) var(--section-gap);
+  }
+</style>

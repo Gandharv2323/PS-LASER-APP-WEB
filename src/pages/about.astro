@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import { withBase } from '../lib/base';
+---
+
+<BaseLayout
+  title="About"
+  description="PS Laser is production management software built for precision manufacturing — orders, workflow, machines, and delivery in one system."
+  path="/about"
+>
+  <PageHero
+    eyebrow="About"
+    title="Built for the shop floor, not a boardroom demo."
+    intro="PS Laser is production management software for precision manufacturing — built to track an order from the moment it's taken to the moment it's delivered, and everything that happens to it in between."
+  />
+
+  <section class="section">
+    <div class="container">
+      <SectionLabel num="01" label="What We Build" />
+      <div class="prose reveal">
+        <p>
+          PS Laser Industries operates a laser cutting, punching, and powder coating
+          production floor. The software behind it grew directly out of that floor's own
+          needs — a single system that an Owner, a Manager, a Supervisor, and a Worker can
+          all use for their part of the same job, without switching between spreadsheets,
+          paper tickets, and phone calls.
+        </p>
+        <p>
+          That's still what it is today: order intake and multi-part pricing, a production
+          workflow that tracks a part through Laser Cutting, Punching, and Powder Coating,
+          machine and worker allocation, delivery supervision, reporting, and an in-app
+          assistant that can answer operational questions using the same live data everyone
+          else is looking at.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider container" />
+
+  <section class="section">
+    <div class="container">
+      <SectionLabel num="02" label="Where To Go Next" />
+      <h2 class="section-title reveal">Explore the platform.</h2>
+      <div class="link-row reveal">
+        <a class="link-card" href={withBase('/services')}>
+          <span>Services</span>
+          <p>The production stages PS Laser tracks.</p>
+        </a>
+        <a class="link-card" href={withBase('/app')}>
+          <span>The App</span>
+          <p>Every screen, from Orders to AI Chat.</p>
+        </a>
+        <a class="link-card" href={withBase('/support')}>
+          <span>Support</span>
+          <p>Help, FAQ, and how to reach us.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding-block: var(--section-gap);
+  }
+  .section-title {
+    font-size: var(--size-h2);
+    margin-top: 18px;
+  }
+  .link-row {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .link-card {
+    display: block;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    transition: border-color 0.2s ease;
+  }
+  .link-card:hover {
+    border-color: var(--gold);
+  }
+  .link-card span {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--text-1);
+  }
+  .link-card p {
+    margin-top: 8px;
+    font-size: 0.9375rem;
+  }
+  @media (min-width: 700px) {
+    .link-row {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

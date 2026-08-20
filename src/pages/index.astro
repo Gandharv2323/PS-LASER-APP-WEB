@@ -1,0 +1,396 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import ShowcasePlaceholder from '../components/ShowcasePlaceholder.astro';
+import { withBase } from '../lib/base';
+---
+
+<BaseLayout
+  title="PS LASER"
+  description="Production management software for precision manufacturing — orders, production workflow, machine tracking, worker allocation, and delivery in one system."
+  path="/"
+>
+  <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow reveal">PS Laser · Production Management</p>
+      <h1 class="hero-title reveal">PRECISION<br />MEETS<br /><span class="gold">PRODUCTION.</span></h1>
+      <p class="hero-copy reveal">
+        Production management built for precision manufacturing — order intake, workflow
+        tracking, machine allocation, and delivery supervision, all in one system.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#platform" class="btn btn-primary">Explore PS Laser</a>
+        <a href={withBase('/app')} class="btn btn-secondary">Explore the App</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 01 — The Platform ───────────────────────────────────────────── -->
+  <section class="section" id="platform">
+    <div class="container">
+      <SectionLabel num="01" label="The Platform" />
+      <h2 class="section-title reveal">One system for the whole shop floor.</h2>
+      <p class="section-copy reveal">
+        PS Laser is used daily by Owners, Managers, Supervisors, and Workers on the same
+        production floor — from taking an order, to allocating it across machines and workers,
+        to confirming it's delivered. Every role sees exactly what their job needs, on the same
+        live data.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider container" />
+
+  <!-- ── 02 — The Workflow ───────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <SectionLabel num="02" label="The Workflow" />
+      <h2 class="section-title reveal">Order to delivery, tracked at every stage.</h2>
+      <p class="section-copy reveal">
+        Every order moves through a defined production sequence. Payment status is tracked
+        independently, so it's never blocked by — or blocking — where an order sits in
+        production.
+      </p>
+
+      <ol class="workflow reveal" aria-label="Production workflow stages">
+        <li>Order Received</li>
+        <li>Designed</li>
+        <li>Laser Cutting</li>
+        <li>Punching</li>
+        <li>Powder Coating</li>
+        <li>Packaging</li>
+        <li>Ready for Dispatch</li>
+        <li>Out for Delivery</li>
+        <li>Delivered</li>
+      </ol>
+
+      <p class="section-copy reveal" style="margin-top: 32px;">
+        When a supervisor allocates a job to specific workers on a specific machine, those
+        workers see it appear in their own queue immediately and get a push notification —
+        the handoff between stages doesn't rely on someone remembering to tell the next person.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider container" />
+
+  <!-- ── 03 — The Services ───────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <SectionLabel num="03" label="The Services" />
+      <h2 class="section-title reveal">Built around three production stages.</h2>
+
+      <div class="services-list">
+        <article class="service-row reveal">
+          <span class="service-num">01</span>
+          <div>
+            <h3>Laser Cutting</h3>
+            <p>The first production stage for cut parts — tracked as its own machine/process type, with per-order progress logged by the assigned worker.</p>
+          </div>
+        </article>
+        <article class="service-row reveal">
+          <span class="service-num">02</span>
+          <div>
+            <h3>Punching</h3>
+            <p>A distinct process stage in the sequence, allocated and tracked the same way as every other stage — its own machines, its own eligible-worker list.</p>
+          </div>
+        </article>
+        <article class="service-row reveal">
+          <span class="service-num">03</span>
+          <div>
+            <h3>Powder Coating</h3>
+            <p>The finishing stage before packaging and dispatch, closing out the tracked production sequence for a part.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider container" />
+
+  <!-- ── 04 — The App ────────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="container app-teaser">
+      <div>
+        <SectionLabel num="04" label="The App" />
+        <h2 class="section-title reveal">One app, every part of the job.</h2>
+        <p class="section-copy reveal">
+          Orders, Calendar, Production, Worker Allocation, Delivery Hub, Reports, AI Chat,
+          reference-image attachments, and full order history — built as one connected system,
+          not separate tools stitched together.
+        </p>
+        <a href={withBase('/app')} class="btn btn-secondary reveal" style="margin-top: 20px;">See the full app</a>
+      </div>
+      <div class="app-teaser-visual reveal">
+        <ShowcasePlaceholder label="Orders" />
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider container" />
+
+  <!-- ── 05 — Production Intelligence ────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <SectionLabel num="05" label="Production Intelligence" />
+      <h2 class="section-title reveal">Visibility across the whole operation.</h2>
+
+      <div class="intel-grid">
+        {[
+          ['Order visibility', 'Every order, current or historical, searchable and filterable — not just what’s active today.'],
+          ['Workflow tracking', 'Production status and payment status tracked as two independent, always-visible states.'],
+          ['Machine tracking', 'A live record of every machine, its process type, and who’s currently working on it.'],
+          ['Worker allocation', 'Split a job across specific eligible workers on a specific machine, weighted by current workload.'],
+          ['Notifications', 'Order events, delivery reminders, and job assignments reach the right person’s device automatically.'],
+          ['Delivery management', 'Today, upcoming, overdue, and delivered orders — with on-time tracking and map lookup.'],
+          ['Reporting', 'Sales performance, order reports, and production analytics, exportable as PDF.'],
+          ['AI assistant', 'An in-app assistant that can answer operational questions using your own live data.'],
+        ].map(([title, copy]) => (
+          <div class="intel-item reveal">
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider container" />
+
+  <!-- ── 06 — Management Roles ───────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <SectionLabel num="06" label="Management Roles" />
+      <h2 class="section-title reveal">Access shaped by the job, not a title screen.</h2>
+
+      <div class="roles-list">
+        <article class="role-row reveal">
+          <h3>Owner</h3>
+          <p>Full system access, including system configuration, developer tools, and the sole ability to activate accounts or change a teammate's role.</p>
+        </article>
+        <article class="role-row reveal">
+          <h3>Manager</h3>
+          <p>Order and production management, reporting, and most administrative screens — short of system configuration and developer tools.</p>
+        </article>
+        <article class="role-row reveal">
+          <h3>Supervisor</h3>
+          <p>Order and production management, delivery supervision, and worker allocation on the floor.</p>
+        </article>
+        <article class="role-row reveal">
+          <h3>Worker</h3>
+          <p>A focused view: their assigned machine's job queue, logging production progress, and their own earnings — nothing beyond what their job needs.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider container" />
+
+  <!-- ── 07 — Delivery / Operations ──────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <SectionLabel num="07" label="Delivery & Operations" />
+      <h2 class="section-title reveal">The delivery floor, in one screen.</h2>
+      <p class="section-copy reveal">
+        Today, Upcoming, Overdue, and Delivered — every dispatch-stage order sorted into the
+        view that matters, with live counts, a map lookup for delivery addresses, and an
+        on-time/late record kept automatically once an order is marked delivered.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider container" />
+
+  <!-- ── 08 — Support / CTA ──────────────────────────────────────────── -->
+  <section class="section cta-section">
+    <div class="container cta-inner reveal">
+      <h2 class="section-title">Questions about PS Laser?</h2>
+      <p class="section-copy">Our support team is reachable directly — no ticket queue, no bot.</p>
+      <div class="hero-actions">
+        <a href={withBase('/support')} class="btn btn-primary">Visit Support</a>
+        <a href={withBase('/contact')} class="btn btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: clamp(72px, 14vh, 160px) clamp(48px, 8vh, 96px);
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 0%, rgba(219, 174, 69, 0.07), transparent 60%);
+  }
+  .hero-inner {
+    max-width: 900px;
+  }
+  .hero-title {
+    font-size: var(--size-display);
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+  .hero-title .gold {
+    color: var(--gold-light);
+    background: linear-gradient(120deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-copy {
+    margin-top: 28px;
+    font-size: var(--size-body-lg);
+    max-width: 52ch;
+  }
+  .hero-actions {
+    margin-top: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .section {
+    padding-block: var(--section-gap);
+  }
+  .section-title {
+    font-size: var(--size-h2);
+    margin-top: 18px;
+    max-width: 18ch;
+  }
+  .section-copy {
+    margin-top: 20px;
+    font-size: var(--size-body-lg);
+    max-width: 58ch;
+  }
+
+  .workflow {
+    margin: 40px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    counter-reset: step;
+  }
+  .workflow li {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 16px;
+    color: var(--text-2);
+    counter-increment: step;
+  }
+  .workflow li::before {
+    content: counter(step) ' — ';
+    color: var(--gold);
+  }
+
+  .services-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  .service-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    padding-block: 32px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .service-row:last-child {
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .service-num {
+    font-family: var(--font-mono);
+    color: var(--gold);
+    font-size: 0.875rem;
+  }
+  .service-row h3 {
+    font-size: var(--size-h3);
+    margin-bottom: 10px;
+  }
+  .service-row p {
+    max-width: 58ch;
+  }
+
+  .app-teaser {
+    display: grid;
+    gap: 48px;
+    align-items: center;
+  }
+  .app-teaser-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .intel-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--border-subtle);
+    border: 1px solid var(--border-subtle);
+  }
+  .intel-item {
+    background: var(--bg-0);
+    padding: 28px;
+  }
+  .intel-item h3 {
+    font-size: 1.0625rem;
+    margin-bottom: 8px;
+    color: var(--text-1);
+  }
+  .intel-item p {
+    font-size: 0.9375rem;
+  }
+
+  .roles-list {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .role-row {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .role-row h3 {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.9375rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .cta-section {
+    background: var(--bg-1);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .cta-inner {
+    text-align: left;
+  }
+  .cta-inner .hero-actions {
+    margin-top: 28px;
+  }
+
+  @media (min-width: 700px) {
+    .intel-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .roles-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 900px) {
+    .intel-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .app-teaser {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+</style>

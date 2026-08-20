@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { withBase } from '../lib/base';
+
+const faqs = [
+  {
+    q: 'How do I sign in?',
+    a: 'PS Laser uses a PIN, not an email/password login. Enter your name and PIN on the login screen. If you don’t have an account yet, you can register — the very first account created for a company automatically becomes the Owner account; every account after that needs to be approved by an Owner or Manager before it can sign in.',
+  },
+  {
+    q: 'I forgot my PIN. What do I do?',
+    a: 'Use “Forgot PIN” on the login screen. You’ll be asked the security question you set when you registered — answering it correctly lets you set a new PIN. If you no longer know the answer, contact your company’s Owner or Manager, or reach our support team.',
+  },
+  {
+    q: 'Why does the app ask me to pick a machine when I log in?',
+    a: 'If your account is set up as a Worker, the app needs to know which physical machine you’re standing at so it can show you the right job queue. You can change this any time from Settings → Switch Machine.',
+  },
+  {
+    q: 'Can I attach a photo to an order?',
+    a: 'Yes — from the camera or your photo library, either while creating the order or later from the order’s detail screen. Up to five reference images per order.',
+  },
+  {
+    q: 'What can the AI assistant actually answer?',
+    a: 'It has access to your company’s live operational data — orders, deliveries, machine status, and more — and can answer questions like what’s overdue, what’s ready for dispatch, or how the floor looks right now. It cannot see or act outside what your own role is already allowed to see in the app.',
+  },
+  {
+    q: 'How do I request that my account or data be deleted?',
+    a: 'See our dedicated Delete Account page for exactly what this covers today and how to request it.',
+    link: { href: withBase('/delete-account'), label: 'Read the Delete Account page' },
+  },
+  {
+    q: 'Who can change an order’s status or record a payment?',
+    a: 'Owners, Managers, and Supervisors can update order status and record payments. Workers can log production progress on jobs assigned to them, but cannot change an order’s overall status or payment record.',
+  },
+];
+---
+
+<BaseLayout
+  title="FAQ"
+  description="Frequently asked questions about PS Laser — login, PIN recovery, machine selection, attachments, the AI assistant, and account deletion."
+  path="/faq"
+>
+  <PageHero eyebrow="FAQ" title="Frequently asked questions." />
+
+  <section class="section">
+    <div class="container faq-list reveal">
+      {faqs.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <div class="answer">
+            <p>{f.a}</p>
+            {f.link && <a href={f.link.href}>{f.link.label} →</a>}
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <hr class="divider container" />
+
+  <section class="section cta">
+    <div class="container reveal">
+      <p>Didn’t find your answer?</p>
+      <a class="btn btn-primary" href={withBase('/support')}>Contact Support</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding-block: var(--section-gap);
+  }
+  .faq-list {
+    max-width: 820px;
+  }
+  .faq-item {
+    border-top: 1px solid var(--border-subtle);
+    padding-block: 8px;
+  }
+  .faq-item:last-child {
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .faq-item summary {
+    cursor: pointer;
+    padding: 18px 4px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    color: var(--text-1);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item summary::after {
+    content: '+';
+    font-family: var(--font-mono);
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .faq-item[open] summary::after {
+    content: '–';
+  }
+  .faq-item summary:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+  }
+  .answer {
+    padding: 0 4px 22px;
+  }
+  .answer p {
+    font-size: 0.9375rem;
+    max-width: 68ch;
+  }
+  .answer a {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--gold-light);
+    text-decoration: none;
+    font-size: 0.9375rem;
+  }
+  .answer a:hover {
+    text-decoration: underline;
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .cta p {
+    font-size: var(--size-body-lg);
+    color: var(--text-1);
+  }
+</style>

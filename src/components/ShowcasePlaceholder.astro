@@ -1,33 +1,74 @@
 ---
-// Real app screenshots don't exist in the repo yet (confirmed during the
-// codebase audit — no screenshots directory anywhere). Rather than
-// fabricate imagery, this renders an honestly-labeled placeholder frame in
-// the app's own phone aspect ratio, so the layout is exactly what a real
-// screenshot will drop into later.
+import { withBase } from '../lib/base';
+
+// Real app screenshots (provided by the app's owner, never generated or
+// fabricated — see scripts/optimize-screenshots.mjs) render inside this
+// same phone-frame chrome as the placeholder below, so sections with and
+// without a real screenshot look like one consistent system rather than
+// two different components. Pass `slug` + `alt` once a screenshot exists
+// for a section; omit both to keep the honest "coming soon" placeholder.
 interface Props {
   label: string;
+  slug?: string;
+  alt?: string;
 }
-const { label } = Astro.props;
+const { label, slug, alt } = Astro.props;
 ---
 
-<div class="placeholder-frame" role="img" aria-label={`Screenshot placeholder: ${label}`}>
-  <div class="frame-inner">
-    <span class="frame-label">{label}</span>
-    <span class="frame-note">Screenshot coming soon</span>
+{slug ? (
+  <figure class="screenshot-frame">
+    <picture>
+      <source srcset={withBase(`/screenshots/${slug}.webp`)} type="image/webp" />
+      <img
+        src={withBase(`/screenshots/${slug}.jpg`)}
+        alt={alt ?? label}
+        loading="lazy"
+        decoding="async"
+        width="600"
+        height="1600"
+      />
+    </picture>
+    <figcaption class="visually-hidden">{alt ?? label}</figcaption>
+  </figure>
+) : (
+  <div class="placeholder-frame" role="img" aria-label={`Screenshot placeholder: ${label}`}>
+    <div class="frame-inner">
+      <span class="frame-label">{label}</span>
+      <span class="frame-note">Screenshot coming soon</span>
+    </div>
   </div>
-</div>
+)}
 
 <style>
+  .screenshot-frame,
   .placeholder-frame {
-    aspect-ratio: 9 / 17.5;
     width: 100%;
     max-width: 300px;
     border-radius: 28px;
     border: 1px solid var(--border);
+    padding: 10px;
+    margin: 0;
     background:
       radial-gradient(circle at 30% 15%, rgba(219, 174, 69, 0.08), transparent 55%),
       linear-gradient(180deg, var(--bg-card), var(--bg-1));
-    padding: 10px;
+  }
+  .screenshot-frame {
+    /* Real screenshots carry their own shadow/depth via the frame below —
+       kept deliberately subtle, consistent with the site's restrained
+       motion/effects posture. No distortion: the image sizes to its own
+       natural aspect ratio inside the frame, never stretched or cropped. */
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  }
+  .screenshot-frame picture,
+  .screenshot-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  .placeholder-frame {
+    aspect-ratio: 9 / 17.5;
   }
   .frame-inner {
     height: 100%;

@@ -9,21 +9,29 @@ const screens = [
     label: 'Orders',
     title: 'Multi-part orders, priced and tracked from intake.',
     copy: 'Create an order with multiple parts, each with its own material, quantity, pricing, and due date. Every order carries an independent production status and payment status, so one is never blocked by the other.',
+    slug: 'orders',
+    alt: 'PS Laser Orders screen showing active order cards with priority, status, and overdue indicators',
   },
   {
     label: 'Calendar',
     title: 'Two views of the same schedule.',
     copy: 'See orders by the date they were taken, or by the date they’re due — as separate, clearly marked views on the same calendar, filterable by who took the order.',
+    slug: 'calender',
+    alt: 'PS Laser Calendar screen showing order-taken and delivery-date markers with a day’s order list below',
   },
   {
     label: 'Production',
     title: 'A part’s stage, always current.',
     copy: 'Laser Cutting, Punching, Powder Coating — each stage’s progress is logged against the order directly, with a manual override available for a Supervisor, Manager, or Owner to correct a stage if needed.',
+    slug: 'production',
+    alt: 'PS Laser order detail screen showing the production progress timeline with Laser Cutting as the current stage',
   },
   {
     label: 'Worker Allocation',
     title: 'Split a job across the right people.',
     copy: 'Assign a quantity of a job to specific eligible workers on a specific machine. A built-in split proposal weighs current workload, then a Supervisor can adjust it before accepting.',
+    slug: 'allocate-to-worker',
+    alt: 'PS Laser Allocate to Workers screen showing a quantity split across an eligible worker with Accept and Create Jobs',
   },
   {
     label: 'My Jobs',
@@ -34,16 +42,22 @@ const screens = [
     label: 'Delivery Hub',
     title: 'Today, Upcoming, Overdue, Delivered.',
     copy: 'Every dispatch-stage order sorted into the view that matters right now, with live counts, a one-tap map lookup for the delivery address, and an on-time/late record kept automatically.',
+    slug: 'delivery-hub',
+    alt: 'PS Laser Delivery Hub showing active, urgent, and overdue delivery counts with the Delivered tab open',
   },
   {
     label: 'Reports',
     title: 'Sales, orders, and production — exportable.',
     copy: 'Sales performance by staff member, a full order-level report, and production analytics, each exportable as a PDF for sharing outside the app.',
+    slug: 'reports',
+    alt: 'PS Laser Reports screen listing Sales Performance, Order Report, AI Demand Forecast, and Production Analytics',
   },
   {
     label: 'AI Chat',
     title: 'Ask the floor a question, get a real answer.',
     copy: 'An in-app assistant that answers using your own live operational data — deliveries due today, overdue orders, floor status — not a generic chatbot bolted on top.',
+    slug: 'ai-chat',
+    alt: 'PS Laser ForgeOps AI chat screen showing a floor-data response listing today’s due orders',
   },
   {
     label: 'Attachments',
@@ -54,6 +68,8 @@ const screens = [
     label: 'History',
     title: 'Every order, ever — not just what’s active.',
     copy: 'The one screen with no status filter at all: every order the company has ever taken, searchable, and filterable by who took it.',
+    slug: 'history',
+    alt: 'PS Laser delivery history showing past delivered orders with on-time and late status',
   },
 ];
 ---
@@ -70,15 +86,15 @@ const screens = [
   />
 
   <div class="callout container reveal" style="margin-bottom: 24px;">
-    Screens below are shown as placeholder frames — real screenshots from the current build
-    will replace them here.
+    Screenshots below are from the current build. My Jobs and Attachments don't have one yet
+    and are shown as clearly labeled placeholders.
   </div>
 
   {screens.map((s, i) => (
     <section class="section screen-row" data-reverse={i % 2 === 1 ? 'true' : undefined}>
       <div class="container screen-grid">
         <div class="screen-visual reveal">
-          <ShowcasePlaceholder label={s.label} />
+          <ShowcasePlaceholder label={s.label} slug={s.slug} alt={s.alt} />
         </div>
         <div class="screen-copy reveal">
           <p class="eyebrow">{s.label}</p>

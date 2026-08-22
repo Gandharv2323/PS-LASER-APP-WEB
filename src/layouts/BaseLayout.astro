@@ -29,6 +29,13 @@ const pageTitle = title === 'PS LASER' ? title : `${title} · PS LASER`;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Search Console verification -->
+    <meta
+      name="google-site-verification"
+      content="YOUR_GOOGLE_CODE"
+    />
+
     <link rel="icon" href={withBase('/favicon-32.png')} type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
     <link rel="canonical" href={canonicalURL} />
@@ -43,6 +50,7 @@ const pageTitle = title === 'PS LASER' ? title : `${title} · PS LASER`;
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content="PS LASER" />
     <meta property="og:image" content={ogImageURL} />
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
@@ -50,12 +58,16 @@ const pageTitle = title === 'PS LASER' ? title : `${title} · PS LASER`;
 
     <meta name="theme-color" content="#0a0a0a" />
   </head>
+
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
+
     <Nav />
+
     <main id="main">
       <slot />
     </main>
+
     <Footer />
 
     <script>
@@ -64,8 +76,10 @@ const pageTitle = title === 'PS LASER' ? title : `${title} · PS LASER`;
       // fade/slide-in transition where JS + IntersectionObserver are
       // available, and never runs at all under prefers-reduced-motion.
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       if (!prefersReduced && 'IntersectionObserver' in window) {
         const els = document.querySelectorAll('.reveal');
+
         const observer = new IntersectionObserver(
           (entries) => {
             for (const entry of entries) {
@@ -75,11 +89,17 @@ const pageTitle = title === 'PS LASER' ? title : `${title} · PS LASER`;
               }
             }
           },
-          { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+          {
+            threshold: 0.15,
+            rootMargin: '0px 0px -8% 0px'
+          }
         );
+
         els.forEach((el) => observer.observe(el));
       } else {
-        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+        document
+          .querySelectorAll('.reveal')
+          .forEach((el) => el.classList.add('is-visible'));
       }
     </script>
   </body>

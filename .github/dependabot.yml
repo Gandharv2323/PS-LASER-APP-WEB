@@ -1,0 +1,22 @@
+version: 2
+
+# GitHub Project Security checklist, item 4 (Dependabot). This repo has one
+# dependency manifest (root package.json, Astro) plus the workflow file
+# that runs it.
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "ci"

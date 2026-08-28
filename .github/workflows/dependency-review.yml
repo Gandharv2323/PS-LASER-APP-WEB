@@ -1,0 +1,23 @@
+name: Dependency Review
+
+# GitHub Project Security checklist, item 4 (dependency review half —
+# Dependabot itself is .github/dependabot.yml). Fails a pull request that
+# introduces an npm dependency with a known vulnerability.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: always

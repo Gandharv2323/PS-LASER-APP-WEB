@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { withBase } from '../lib/base';
 
-const lastUpdated = '20 August 2026';
+const lastUpdated = '6 September 2026';
 ---
 
 <BaseLayout
@@ -109,11 +109,52 @@ const lastUpdated = '20 August 2026';
           purposes and are not accessible to any user through the app.
         </p>
 
-        <h2>Your choices &amp; account deletion</h2>
+        <h2>Account Deletion</h2>
         <p>
-          See our dedicated <a href={withBase('/delete-account')}>Delete Account</a> page for exactly what
-          deleting your account covers today, what business records are retained regardless,
-          and how to request it.
+          PS LASER users (our own staff — Owners, Managers, Supervisors, and Workers) can
+          request deletion of their account and associated personal data at any time, either
+          from inside the app or by email.
+        </p>
+
+        <h3>Option 1 — In the app</h3>
+        <p>
+          Open the PS LASER app and go to <strong>Settings → Request Account Deletion</strong>.
+          Confirming this immediately deactivates the account — the user can no longer log in —
+          and submits a deletion request for that person's company Owner or Manager to review
+          and complete. Deactivation happens right away; finalizing the request is completed by
+          the Owner/Manager, not automatically, so exact timing after that point can vary.
+        </p>
+
+        <h3>Option 2 — By email</h3>
+        <p>
+          If the app isn't accessible, email <a href="mailto:pslaser24@gmail.com?subject=Account%20Deletion%20Request">pslaser24@gmail.com</a>
+          from the email address associated with the account (or include the registered name
+          and employer) with the subject "Account Deletion Request." We confirm identity with
+          the company's Owner or Manager and process the request from there, within a
+          reasonable time after that confirmation.
+        </p>
+
+        <h3>What a deletion request covers</h3>
+        <ul>
+          <li>The employee profile (name, role, department, shift)</li>
+          <li>Login credentials (PIN hash, security-question answer)</li>
+          <li>Device push-notification tokens registered to the account</li>
+          <li>The AI assistant's chat history for that account</li>
+        </ul>
+
+        <h3>What is retained regardless of a deletion request</h3>
+        <p>
+          Orders, client records, and production/financial history a user was involved in are
+          kept as business and legal/financial records, the same way they're retained for every
+          account — not specific to any one person. This is the same standard bookkeeping and
+          audit-trail practice described under "Data retention" above. A user's name may
+          continue to appear on historical records (for example, "order taken by") even after
+          their account itself is deleted.
+        </p>
+
+        <p>
+          See our dedicated <a href={withBase('/delete-account')}>Account Deletion</a> page for
+          the same information in one place, kept in sync with this section.
         </p>
 
         <h2>Camera &amp; photo library access</h2>

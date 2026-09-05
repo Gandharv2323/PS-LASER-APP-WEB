@@ -3,34 +3,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { withBase } from '../lib/base';
 
-const lastUpdated = '20 August 2026';
+const lastUpdated = '6 September 2026';
 ---
 
 <BaseLayout
-  title="Delete Account"
-  description="How to request deletion of your PS Laser account and data, and exactly what is and isn't covered today."
+  title="PS LASER — Account Deletion Request"
+  description="How to request deletion of your PS Laser account and data, in-app or by email, and exactly what is and isn't covered."
   path="/delete-account"
 >
-  <PageHero eyebrow="Legal" title="Delete Account" />
+  <PageHero eyebrow="Legal" title="Account Deletion Request" />
 
   <section class="section">
     <div class="container">
       <p class="last-updated reveal">Last updated: {lastUpdated}</p>
 
       <div class="prose reveal">
-        <div class="callout warning">
-          <strong>Current status:</strong> the app has a "Delete My Account" control (Settings
-          → Danger Zone), but it is not completing correctly end-to-end today — a known issue
-          we're actively addressing. Until it's fixed, please use the request path below
-          instead.
-        </div>
-
-        <h2>How to request account deletion</h2>
+        <h2>Option 1 — In the app</h2>
         <p>
-          Email <a href="mailto:pslaser24@gmail.com?subject=Account%20Deletion%20Request">pslaser24@gmail.com</a>
+          Open the PS LASER app and go to <strong>Settings → Request Account Deletion</strong>.
+          Confirming this immediately deactivates your account — you will no longer be able to
+          log in — and submits a deletion request for your company's Owner or Manager to review
+          and complete.
+        </p>
+
+        <h2>Option 2 — By email</h2>
+        <p>
+          If you can't access the app, email <a href="mailto:pslaser24@gmail.com?subject=Account%20Deletion%20Request">pslaser24@gmail.com</a>
           from the email address associated with your account (or include your registered name
           and employer) with the subject "Account Deletion Request." We'll confirm your
-          identity with your company's Owner or Manager and process the request.
+          identity with your company's Owner or Manager and process the request from there.
         </p>
 
         <h2>What deletion covers</h2>
@@ -53,10 +54,11 @@ const lastUpdated = '20 August 2026';
 
         <h2>Timeline</h2>
         <p>
-          We aim to process deletion requests within a reasonable time after confirming your
-          identity. Because this is currently a manual, request-based process rather than an
-          automated one, exact timing can vary — we'll confirm with you directly once your
-          request is received.
+          Deactivation (Option 1) is immediate — your account stops working the moment you
+          confirm it in the app. Finalizing the deletion request itself is completed by your
+          company's Owner or Manager, not automatically, so exact timing after that point can
+          vary. For an email request (Option 2), we aim to process it within a reasonable time
+          after confirming your identity, and will confirm with you directly once it's received.
         </p>
       </div>
     </div>

@@ -61,6 +61,7 @@ const pageTitle = title === 'PS LASER' ? title : `${title} · PS LASER`;
     <meta name="twitter:image" content={ogImageURL} />
 
     <meta name="theme-color" content="#0a0a0a" />
+    <script is:inline>document.documentElement.classList.add("reveal-ready");</script>
   </head>
 
   <body>
@@ -96,7 +97,7 @@ const pageTitle = title === 'PS LASER' ? title : `${title} · PS LASER`;
             }
           },
           {
-            threshold: 0.15,
+            threshold: 0,
             rootMargin: '0px 0px -8% 0px',
           }
         );

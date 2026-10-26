@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { withBase } from '../lib/base';
 
-const lastUpdated = '6 September 2026';
+const lastUpdated = '26 October 2026';
 ---
 
 <BaseLayout
@@ -121,8 +121,8 @@ const lastUpdated = '6 September 2026';
           Open the PS LASER app and go to <strong>Settings → Request Account Deletion</strong>.
           Confirming this immediately deactivates the account — the user can no longer log in —
           and submits a deletion request for that person's company Owner or Manager to review
-          and complete. Deactivation happens right away; finalizing the request is completed by
-          the Owner/Manager, not automatically, so exact timing after that point can vary.
+          and complete. Deactivation happens right away; the Owner/Manager then completes the deletion,
+          which we aim to finish within 7 days of the request.
         </p>
 
         <h3>Option 2 — By email</h3>
@@ -130,13 +130,16 @@ const lastUpdated = '6 September 2026';
           If the app isn't accessible, email <a href="mailto:pslaser24@gmail.com?subject=Account%20Deletion%20Request">pslaser24@gmail.com</a>
           from the email address associated with the account (or include the registered name
           and employer) with the subject "Account Deletion Request." We confirm identity with
-          the company's Owner or Manager and process the request from there, within a
-          reasonable time after that confirmation.
+          the company's Owner or Manager and process the request from there, within 7 days
+          after that confirmation.
         </p>
 
         <h3>What a deletion request covers</h3>
         <ul>
-          <li>The employee profile (name, role, department, shift)</li>
+          <li>
+            The employee profile's personal details (name, department, shift, security
+            question). Only an anonymous ID and the role are kept, as an audit record.
+          </li>
           <li>Login credentials (PIN hash, security-question answer)</li>
           <li>Device push-notification tokens registered to the account</li>
           <li>The AI assistant's chat history for that account</li>

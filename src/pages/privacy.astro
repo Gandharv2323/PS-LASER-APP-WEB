@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { withBase } from '../lib/base';
 
-const lastUpdated = '26 October 2026';
+const lastUpdated = '1 November 2026';
 ---
 
 <BaseLayout
@@ -29,8 +29,7 @@ const lastUpdated = '26 October 2026';
         </p>
         <p>
           PS Laser is an internal manufacturing operations application used by PS Laser's own
-          staff (Owners, Managers, Supervisors, and Workers) to manage orders, production, and
-          delivery. It is not a consumer-facing app, and customers do not create accounts or
+          staff (the Owner and Workers) to manage orders, production, and delivery. It is not a consumer-facing app, and customers do not create accounts or
           log in themselves.
         </p>
 
@@ -54,6 +53,12 @@ const lastUpdated = '26 October 2026';
         <ul>
           <li>Client name, phone number, email address, billing/delivery address, and GST number, where provided</li>
           <li>Order details: items, quantities, pricing, due dates, and an optional reference photo</li>
+          <li>
+            Bills, quotations, and payment records the Owner creates: line items, tax amounts,
+            totals, payment dates and mode (cash, UPI, bank, or cheque), and notes. The app does
+            not process payments and stores no card, UPI, or bank-account credentials.
+          </li>
+          <li>Product catalogue entries the Owner creates: product name, material, rate, and an optional design photo</li>
         </ul>
 
         <div class="callout">
@@ -91,9 +96,10 @@ const lastUpdated = '26 October 2026';
               <tr><td>Firebase Cloud Messaging</td><td>Delivers push notifications to your device</td></tr>
               <tr><td>Firebase Crashlytics</td><td>Crash reporting in release builds only, to help us fix bugs. No advertising or usage-analytics SDK is used anywhere in the app.</td></tr>
               <tr><td>Cloudflare Workers</td><td>Our application backend — handles login, notifications, and the AI assistant proxy</td></tr>
-              <tr><td>Backblaze B2</td><td>Stores order reference images while an order is active</td></tr>
+              <tr><td>Backblaze B2</td><td>Stores order reference images while an order is active, product design photos, and generated monthly report files</td></tr>
               <tr><td>Google Drive</td><td>A dedicated business Google account (not any user's personal account) archives older order reference images after a retention period</td></tr>
               <tr><td>OpenRouter</td><td>Processes AI assistant chat requests (see "How we use data" above)</td></tr>
+              <tr><td>WhatsApp (Meta)</td><td>Used by the Owner to share bills, quotations, statements, and reports. Sharing from the app opens WhatsApp on your own device and you choose the recipient; nothing is sent to WhatsApp automatically. If the Owner turns on the optional automatic monthly report, our backend uses Meta's WhatsApp Business Platform to send the report file to the Owner's own WhatsApp number. WhatsApp's own privacy policy applies to messages once they are sent.</td></tr>
             </tbody>
           </table>
         </div>

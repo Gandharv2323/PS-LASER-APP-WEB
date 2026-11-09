@@ -15,9 +15,17 @@ import sitemap from '@astrojs/sitemap';
 // correct under that sub-path — Astro does not rewrite raw hrefs itself,
 // only its own generated asset and sitemap URLs respect `base`
 // automatically.
+//
+// Vercel / custom-domain deploy: Vercel sets VERCEL=1 during its build, so
+// there the site is served from the domain ROOT (base '/') and `site` is the
+// real domain from the SITE_URL env var. GitHub Pages builds are unchanged.
+const onVercel = !!process.env.VERCEL;
+
 export default defineConfig({
-  site: 'https://gandharv2323.github.io',
-  base: '/PS-LASER-APP-WEB',
+  site: onVercel
+    ? (process.env.SITE_URL || 'https://info.pslaser.online')
+    : 'https://gandharv2323.github.io',
+  base: onVercel ? '/' : '/PS-LASER-APP-WEB',
   integrations: [sitemap()],
   compressHTML: true,
 });
